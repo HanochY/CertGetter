@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/grabber_style.css') }}">
+{% endblock %}
+{% block content %}
+    <h1>Welcome {{ username }}!</h1>
+    <form class="grab-form" method="post" id="grab-form">
+        <input placeholder="Address" maxlength="17" class="address-input" type="text" id="address" name="address"> <!--change name of input-->
+        <input class="button" type="submit" name="button" value="Grab">
+    </form>
+    <ul>
+        {% for file in files %}
+         <li> <a href="{{ url_for('download', filename=file) }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
